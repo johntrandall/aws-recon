@@ -1,29 +1,29 @@
 ---
-- name: Organizations
-  global: true
-  alias: organizations
-- name: AccessAnalyzer
-  alias: aa
-- name: ApplicationAutoScaling
-  alias: aas
-- name: Backup
-  alias: backup
-- name: ConfigService
-  alias: config
-- name: CodeBuild
-  alias: codebuild
-- name: CodePipeline
-  alias: codepipeline
-  excluded_regions:
-    - af-south-1
-    - ap-northeast-3
-    - me-south-1
-- name: AutoScaling
-  alias: autoscaling
-- name: CloudTrail
-  alias: cloudtrail
-- name: CloudFront
-  alias: cloudfront
+# - name: Organizations
+#   global: true
+#   alias: organizations
+# - name: AccessAnalyzer
+#   alias: aa
+# - name: ApplicationAutoScaling
+#   alias: aas
+# - name: Backup
+#   alias: backup
+# - name: ConfigService
+#   alias: config
+# - name: CodeBuild
+#   alias: codebuild
+# - name: CodePipeline
+#   alias: codepipeline
+#   excluded_regions:
+#     - af-south-1
+#     - ap-northeast-3
+#     - me-south-1
+# - name: AutoScaling
+#   alias: autoscaling
+# - name: CloudTrail
+#   alias: cloudtrail
+# - name: CloudFront
+#   alias: cloudfront
 - name: EC2
   global: true
   alias: ec2
@@ -39,15 +39,15 @@
   alias: elbv2
 - name: ElastiCache
   alias: elasticache
-- name: EMR
-  alias: emr
-- name: Glue
-  alias: glue
-- name: IAM
-  global: true
-  alias: iam
-- name: Lambda
-  alias: lambda
+# - name: EMR
+#   alias: emr
+# - name: Glue
+#   alias: glue
+# - name: IAM
+#   global: true
+#   alias: iam
+# - name: Lambda
+#   alias: lambda
 - name: S3
   global: true
   alias: s3
@@ -82,99 +82,99 @@
     - ap-east-1
     - eu-south-1
     - me-south-1
-- name: DynamoDB
-  alias: dynamodb
-- name: KMS
-  alias: kms
-- name: Kinesis
-  alias: kinesis
-- name: Redshift
-  alias: redshift
-- name: ElasticsearchService
-  alias: es
+# - name: DynamoDB
+#   alias: dynamodb
+# - name: KMS
+#   alias: kms
+# - name: Kinesis
+#   alias: kinesis
+# - name: Redshift
+#   alias: redshift
+# - name: ElasticsearchService
+#   alias: es
 - name: APIGateway
   alias: apigateway
 - name: ApiGatewayV2
   alias: apigatewayv2
-- name: Route53
-  alias: route53
-- name: Route53Domains
-  global: true
-  alias: route53domains
-- name: SQS
-  alias: sqs
-- name: ACM
-  alias: acm
-- name: SNS
-  alias: sns
-- name: Shield
-  global: true
-  alias: shield
-- name: CloudFormation
-  alias: cloudformation
-- name: SES
-  alias: ses
-  excluded_regions:
-    - ap-east-1
-- name: CloudWatch
-  alias: cloudwatch
-- name: CloudWatchLogs
-  alias: cloudwatchlogs
-- name: Kafka
-  alias: kafka
-- name: SecretsManager
-  alias: secretsmanager
-- name: SecurityHub
-  alias: securityhub
-- name: Support
-  global: true
-  alias: support
-- name: SSM
-  alias: ssm
-- name: GuardDuty
-  alias: guardduty
-- name: Athena
-  alias: athena
-- name: EFS
-  alias: efs
-- name: Firehose
-  alias: firehose
-- name: Lightsail
-  alias: lightsail
-  excluded_regions:
-    - af-south-1
-    - ap-east-1
-    - ap-northeast-3
-    - eu-south-1
-    - me-south-1
-    - sa-east-1
-    - us-west-1
-- name: WorkSpaces
-  alias: workspaces
-  excluded_regions:
-    - ap-east-1
-    - ap-northeast-3
-    - eu-north-1
-    - eu-south-1
-    - eu-west-3
-    - me-south-1
-    - us-east-2
-    - us-west-1
-- name: SageMaker
-  alias: sagemaker
-- name: ServiceQuotas
-  alias: servicequotas
-- name: Transfer
-  alias: transfer
-- name: DirectConnect
-  alias: directconnect
-- name: DirectoryService
-  alias: ds
-- name: DatabaseMigrationService
-  alias: dms
-- name: XRay
-  alias: xray
-- name: WAFV2
-  alias: wafv2
-  excluded_regions:
-    - ap-northeast-3
+# - name: Route53
+#   alias: route53
+# - name: Route53Domains
+#   global: true
+#   alias: route53domains
+# - name: SQS
+#   alias: sqs
+# - name: ACM
+#   alias: acm
+# - name: SNS
+#   alias: sns
+# - name: Shield
+#   global: true
+#   alias: shield
+# - name: CloudFormation
+#   alias: cloudformation
+# - name: SES
+#   alias: ses
+#   excluded_regions:
+#     - ap-east-1
+# - name: CloudWatch
+#   alias: cloudwatch
+# - name: CloudWatchLogs
+#   alias: cloudwatchlogs
+# - name: Kafka
+#   alias: kafka
+# - name: SecretsManager
+#   alias: secretsmanager
+# - name: SecurityHub
+#   alias: securityhub
+# - name: Support
+#   global: true
+#   alias: support
+# - name: SSM
+#   alias: ssm
+# - name: GuardDuty
+#   alias: guardduty
+# - name: Athena
+#   alias: athena
+# - name: EFS
+#   alias: efs
+# - name: Firehose
+#   alias: firehose
+# - name: Lightsail
+#   alias: lightsail
+#   excluded_regions:
+#     - af-south-1
+#     - ap-east-1
+#     - ap-northeast-3
+#     - eu-south-1
+#     - me-south-1
+#     - sa-east-1
+#     - us-west-1
+# - name: WorkSpaces
+#   alias: workspaces
+#   excluded_regions:
+#     - ap-east-1
+#     - ap-northeast-3
+#     - eu-north-1
+#     - eu-south-1
+#     - eu-west-3
+#     - me-south-1
+#     - us-east-2
+#     - us-west-1
+# - name: SageMaker
+#   alias: sagemaker
+# - name: ServiceQuotas
+#   alias: servicequotas
+# - name: Transfer
+#   alias: transfer
+# - name: DirectConnect
+#   alias: directconnect
+# - name: DirectoryService
+#   alias: ds
+# - name: DatabaseMigrationService
+#   alias: dms
+# - name: XRay
+#   alias: xray
+# - name: WAFV2
+#   alias: wafv2
+#   excluded_regions:
+#     - ap-northeast-3

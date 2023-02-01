@@ -23,6 +23,7 @@ class Mapper
   #   Shield
   #   S3 (unless the bucket was created in another region)
   SINGLE_REGION_SERVICES = %w[route53domains s3 shield support organizations].freeze
+  AWS_ARN = ENV["AWS_ARN"]
 
   def initialize(account, service, region, options)
     @account = account
@@ -54,6 +55,7 @@ class Mapper
 
     # debug with wire trace
     client_options.merge!({ http_wire_trace: true }) if @options.debug
+    client_options.merge!({credentials: credentials(AWS_ARN, "", client_options[:region])})
 
     @client = Object.const_get(module_name).new(client_options)
   end
@@ -75,5 +77,21 @@ class Mapper
     return unless @options.verbose
 
     puts _msg(msg).map(&:to_s).join('.')
+  end
+
+  AWS_ACCESS_KEY = ENV['AWS_ACCESS_KEY']
+  AWS_SECRET_ACCESS_KEY = ENV['AWS_SECRET_ACCESS_KEY']
+  AWS_ROLE_SESSION_NAME = "OL_INFRA_SYNC"
+
+
+  def credentials(arn, external_id, region)
+    Aws::AssumeRoleCredentials.new(
+      client: Aws::STS::Client.new(
+        region: region,
+        credentials: Aws::Credentials.new(AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY)
+      ),
+      role_arn: arn,
+      role_session_name: AWS_ROLE_SESSION_NAME
+    )
   end
 end

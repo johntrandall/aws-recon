@@ -29,11 +29,28 @@ class Parser
     :quit_on_exception,
     :debug
   )
+  AWS_ACCESS_KEY = ENV['AWS_ACCESS_KEY']
+  AWS_SECRET_ACCESS_KEY = ENV['AWS_SECRET_ACCESS_KEY']
+  AWS_ROLE_SESSION_NAME = "OL_INFRA_SYNC"
 
+  def self.credentials(arn, external_id, region)
+    Aws::AssumeRoleCredentials.new(
+      client: Aws::STS::Client.new(
+        region: region,
+        credentials: Aws::Credentials.new(AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY)
+      ),
+      role_arn: arn,
+      role_session_name: AWS_ROLE_SESSION_NAME
+    )
+  end
+
+  AWS_ARN = ENV["AWS_ARN"]
   def self.parse(options)
     begin
       unless (options & ['-h', '--help']).any?
-        aws_regions = ['global'].concat(Aws::EC2::Client.new.describe_regions.regions.map(&:region_name))
+        creds = credentials(AWS_ARN, "", "us-east-1")
+        ec2_client = Aws::EC2::Client.new(region: 'us-east-1', credentials: creds) 
+        aws_regions = ec2_client.describe_regions.regions.map(&:region_name)
       end
     rescue Aws::Errors::ServiceError => e
       warn "\nAWS Error: #{e.code}\n\n"

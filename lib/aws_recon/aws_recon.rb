@@ -4,6 +4,7 @@ SERVICES_CONFIG_FILE = File.join(File.dirname(__FILE__), 'services.yaml').freeze
 
 module AwsRecon
   class CLI
+    AWS_ARN = ENV["AWS_ARN"]
     def initialize
       # parse options
       @options = Parser.parse ARGV.empty? ? %w[-h] : ARGV
@@ -12,7 +13,7 @@ module AwsRecon
       @starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 
       # AWS account id
-      @account_id = Aws::STS::Client.new.get_caller_identity.account
+      @account_id = AWS_ARN #Aws::STS::Client.new.get_caller_identity.account
 
       # AWS services
       @aws_services = YAML.safe_load(File.read(SERVICES_CONFIG_FILE), symbolize_names: true)
